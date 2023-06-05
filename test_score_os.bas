@@ -4,20 +4,6 @@ Attribute VB_Name = "test_score_os"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub ts_score_addHelp()
-Application.MacroOptions _
-    Macro:="ts_score_os", _
-    Description:="one-sample Score test", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "range with data", _
-        "range with the two codes to count", _
-        "expected proportion (default 0.5)", _
-        "use of continuity correction, either " & Chr(34) & "none" & Chr(34) & "(default), or " & Chr(34) & "yates" & Chr(34), _
-        "output to show, either " & Chr(34) & "all (default)" & Chr(34) & ", " & Chr(34) & "pvalue" & Chr(34) & ", " & Chr(34) & "statistic" & Chr(34))
-        
-End Sub
-
 Function ts_score_os(data As Range, Optional codes As Range, _
                     Optional p0 = 0.5, _
                     Optional cc = "none", _

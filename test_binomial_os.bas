@@ -22,6 +22,8 @@ Function ts_binomial_os(data As Range, Optional codes As Range, _
                         Optional p0 = 0.5, _
                         Optional TwoSidedMethod = "eqdist", _
                         Optional output = "all")
+Attribute ts_binomial_os.VB_Description = "one-sample binomial test"
+Attribute ts_binomial_os.VB_ProcData.VB_Invoke_Func = " \n14"
 
 'one-sample exact binomial test
 'data list of data

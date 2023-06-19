@@ -8,7 +8,7 @@ Attribute VB_Name = "help_excel"
 Option Private Module
 
 Function he_range_to_num_array(data As Range)
-'function to convert a range to an array with numeric value
+'function to convert a range to an array with numeric value from 0 to n-1
     nr = data.Rows.Count
     nData = WorksheetFunction.Count(data)
     
@@ -82,5 +82,17 @@ Function he_replace(data As Range, levels As Range)
 
 End Function
 
+Function he_srf(k, n)
+'signed ranks frequencies
 
+If k < 0 Then
+    he_srf = 0
+ElseIf k > WorksheetFunction.Combin(n + 1, 2) Then
+    he_srf = 0
+
+ElseIf n = 1 And (k = 0 Or k = 1) Then
+    he_srf = 1
+Else
+    he_srf = he_srf(k - n, n - 1) + he_srf(k, n - 1)
+End If
 

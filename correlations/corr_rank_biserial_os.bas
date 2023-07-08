@@ -4,23 +4,12 @@ Attribute VB_Name = "corr_rank_biserial_os"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub r_rank_biserial_os_addHelp()
-Application.MacroOptions _
-    Macro:="r_rank_biserial_os", _
-    Description:="Rank biserial correlation coefficient (one-sample)", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "vertical specific range with data", _
-        "optional vertical range with labels in order if data is non-numeric.", _
-        "optional parameter to set the hypothesized median. If not used the midrange is used", _
-        "optional to set what output to show. Either all (default), mu or value")
-        
-End Sub
-
 Function r_rank_biserial_os(data As Range, _
                             Optional levels As Range, _
                             Optional mu = "none", _
                             Optional output = "all")
+Attribute r_rank_biserial_os.VB_Description = "Rank biserial correlation coefficient (one-sample)"
+Attribute r_rank_biserial_os.VB_ProcData.VB_Invoke_Func = " \n14"
                     
     'get data as numeric values
     If levels Is Nothing Then
@@ -155,7 +144,7 @@ Function r_rank_biserial_os(data As Range, _
     Else
         'Results
         Dim res(1 To 2, 1 To 2)
-        res(1, 1) = "hyp. med."
+        res(1, 1) = "mu"
         res(1, 2) = "rb"
         res(2, 1) = mu
         res(2, 2) = rb

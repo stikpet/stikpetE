@@ -4,21 +4,10 @@ Attribute VB_Name = "test_freeman_tukey_read"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub ts_freeman_tukey_read_addHelp()
-Application.MacroOptions _
-    Macro:="ts_freeman_tukey_read", _
-    Description:="Freeman-Tukey-Read  Test", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "range with data", _
-        "Optional range with categories and expected counts", _
-        "Optional weights for adjustments (should sum to 4)", _
-        "use of continuity correction, either " & Chr(34) & "none" & Chr(34) & "(default), " & Chr(34) & "yates" & Chr(34) & ", " & Chr(34) & "pearson" & Chr(34) & ", " & Chr(34) & "williams", _
-        "output to show, either " & Chr(34) & "all" & "(default), " & Chr(34) & "pvalue" & ", " & Chr(34) & "df" & Chr(34) & Chr(34) & ", " & Chr(34) & "statistic" & Chr(34))
-        
-End Sub
 
 Function ts_freeman_tukey_read(data As Range, Optional expCount As Range, Optional weights As Range, Optional cc = "none", Optional output = "all")
+Attribute ts_freeman_tukey_read.VB_Description = "Freeman-Tukey-Read  Test"
+Attribute ts_freeman_tukey_read.VB_ProcData.VB_Invoke_Func = " \n14"
 
 Dim weightsArr As Variant
 'Set standard weights if none provided
@@ -127,10 +116,10 @@ Else
             
             bSum = 0
             For j = 1 To nWeights
-                bSum = bSum + weightsArr(j, 1) * Sqr(cats(i, 2) / expCounts(i))
+                bSum = bSum + weightsArr(j, 1) * Sqr(cats(i, 2) / expCounts(i)) ^ (j - 1)
             Next j
             
-            chiVal = chiVal + (Sqr(cats(i, 2)) - Sqr(expCounts(i))) * bSum
+            chiVal = chiVal + (Sqr(cats(i, 2)) - Sqr(expCounts(i))) ^ 2 * bSum
             
         End If
     Next i
@@ -173,20 +162,23 @@ Else
         propBelow5 = propBelow5 / k
         
         'Results
-        Dim res(1 To 2, 1 To 6)
-        res(1, 1) = "statistic"
-        res(1, 2) = "df"
-        res(1, 3) = "p-value"
-        res(1, 4) = "minExp"
-        res(1, 5) = "propBelow5"
-        res(1, 6) = "test"
-        
-        res(2, 1) = chiVal
-        res(2, 2) = df
-        res(2, 3) = pVal
-        res(2, 4) = minExp
-        res(2, 5) = propBelow5
-        res(2, 6) = testUsed
+        Dim res(1 To 2, 1 To 8)
+        res(1, 1) = "n"
+        res(1, 2) = "k"
+        res(1, 3) = "statistic"
+        res(1, 4) = "df"
+        res(1, 5) = "p-value"
+        res(1, 6) = "minExp"
+        res(1, 7) = "propBelow5"
+        res(1, 8) = "test"
+        res(2, 1) = n
+        res(2, 2) = k
+        res(2, 3) = chiVal
+        res(2, 4) = df
+        res(2, 5) = pVal
+        res(2, 6) = minExp
+        res(2, 7) = propBelow5
+        res(2, 8) = testUsed
         
         ts_freeman_tukey_read = res
     End If

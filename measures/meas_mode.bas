@@ -4,19 +4,10 @@ Attribute VB_Name = "meas_mode"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub me_mode_addHelp()
-Application.MacroOptions _
-    Macro:="me_mode", _
-    Description:="Mode", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "specific vertical range with data", _
-        "optional to indicate what to do if all frequencies are equal, either none (default) or all", _
-        "optional to indicate what to show. Either all (default), mode, or freq")
-               
-End Sub
 
-Function me_mode(data As range, Optional allEq = "none", Optional output = "all")
+Function me_mode(data As Range, Optional allEq = "none", Optional output = "all")
+Attribute me_mode.VB_Description = "Mode"
+Attribute me_mode.VB_ProcData.VB_Invoke_Func = " \n14"
 'makes use of the tab_frequency function
     
     freq = tab_frequency(data)

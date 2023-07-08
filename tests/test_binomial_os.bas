@@ -4,19 +4,6 @@ Attribute VB_Name = "test_binomial_os"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub ts_binomial_addHelp()
-Application.MacroOptions _
-    Macro:="ts_binomial_os", _
-    Description:="one-sample binomial test", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "specific range with data", _
-        "optional range with the two codes to count, otherwise first two found values will be used", _
-        "expected proportion (default 0.5)", _
-        "method to use for two sided, either " & Chr(34) & "double" & Chr(34) & ", " & Chr(34) & "smallp" & Chr(34) & ", or " & Chr(34) & "eqdist" & Chr(34) & " (default)", _
-        "default is " & Chr(34) & "all" & Chr(34) & ", to use as array function of 2x2, otherwise the p-value is shown")
-               
-End Sub
     
 Function ts_binomial_os(data As Range, Optional codes As Range, _
                         Optional p0 = 0.5, _

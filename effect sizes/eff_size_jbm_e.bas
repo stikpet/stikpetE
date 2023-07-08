@@ -4,20 +4,9 @@ Attribute VB_Name = "eff_size_jbm_e"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub es_jbm_e_addHelp()
-Application.MacroOptions _
-    Macro:="es_jbm_e", _
-    Description:="Johnston-Berry-Mielke E", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "the chi-square test statistic", _
-        "the sample size", _
-        "the minimum expected count", _
-        "test used, either " & Chr(34) & "chi" & Chr(34) & " (default) or " & Chr(34) & "g" & Chr(34))
-        
-End Sub
-
 Function es_jbm_e(chi2, n, minExp, Optional test = "chi")
+Attribute es_jbm_e.VB_Description = "Johnston-Berry-Mielke E"
+Attribute es_jbm_e.VB_ProcData.VB_Invoke_Func = " \n14"
 'calculates Johnston-Berry-Mielke E
 'chiVal -> chi-square value
 'minExp -> minimum expected count, if all expected counts equal simply use n/k

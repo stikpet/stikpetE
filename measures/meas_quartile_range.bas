@@ -4,22 +4,9 @@ Attribute VB_Name = "meas_quartile_range"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub me_quartile_range_addHelp()
-Application.MacroOptions _
-    Macro:="me_quartile_range", _
-    Description:="Quartile Range", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "vertical specific range with data", _
-        "optional vertical range with labels in order if data is non-numeric.", _
-        "optional which measure to calculate. Either iqr, siqr, qd, or mqr", _
-        "optional which method to use to calculate quartiles indexMethod can be set to Can be set to inclusive, exclusive, sas1, sas2, sas3, sas5, sas4, ms, lohninger, hl2, hl1, excel, pd2, pd3, pd4, hf3b, pd5, hf8, hf9, maple2", _
-        "optional which output to show. Either all (default) or value")
-               
-End Sub
 
-Function me_quartile_range(data As range, _
-                            Optional levels As range, _
+Function me_quartile_range(data As Range, _
+                            Optional levels As Range, _
                             Optional measure = "iqr", _
                             Optional method = "cdf", _
                             Optional output = "all")

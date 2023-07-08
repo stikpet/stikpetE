@@ -4,17 +4,9 @@ Attribute VB_Name = "meas_consensus"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub me_consensus_addHelp()
-Application.MacroOptions _
-    Macro:="me_consensus", _
-    Description:="Concensus", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "specific range with data", _
-        "optional range with the order of the categories")
-               
-End Sub
 Function me_consensus(data As Range, Optional levels As Range)
+Attribute me_consensus.VB_Description = "Concensus"
+Attribute me_consensus.VB_ProcData.VB_Invoke_Func = " \n14"
 'Uses the tab_frequency function
 
     'get data as numeric values

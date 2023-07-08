@@ -4,26 +4,13 @@ Attribute VB_Name = "test_sign_os"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub ts_sign_os_addHelp()
-Application.MacroOptions _
-    Macro:="ts_sign_os", _
-    Description:="one-sample sign test", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "range with the data as numbers", _
-        "optional vertical range with labels in order if data is non-numeric.", _
-        "optional hypothesized median, otherwise the midrange will be used", _
-        "optional output to show. Either all (default), pvalue, or mu")
-        
-End Sub
-
 Function ts_sign_os(data As Range, _
                     Optional levels As Range, _
                     Optional mu = "none", _
                     Optional output = "all")
+Attribute ts_sign_os.VB_Description = "perform a one-sample sign test"
+Attribute ts_sign_os.VB_ProcData.VB_Invoke_Func = " \n14"
                     
-    'perform a one-sample sign test
-    
     'get data as numeric values
     If levels Is Nothing Then
         dataN = he_range_to_num_array(data)

@@ -4,18 +4,10 @@ Attribute VB_Name = "table_frequency"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub tab_frequency_addHelp()
-Application.MacroOptions _
-    Macro:="tab_frequency", _
-    Description:="Frequency Table", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "specific range with data", _
-        "optional range with the order of the categories")
-               
-End Sub
 
 Function tab_frequency(data As Range, Optional order As Range)
+Attribute tab_frequency.VB_Description = "Frequency Table"
+Attribute tab_frequency.VB_ProcData.VB_Invoke_Func = " \n14"
 
     nMissing = 0
     

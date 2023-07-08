@@ -14,12 +14,12 @@ Function he_range_to_num_array(data As Range)
     
     
     Dim dataArr() As Double
-    ReDim dataArr(0 To nr - 1)
+    ReDim dataArr(0 To nData - 1)
     Dim i, k As Integer
     k = 0
     i = 1
     Do While k < nData
-        If WorksheetFunction.IsNumber(data(i)) Then
+        If Not IsEmpty(data(i)) And WorksheetFunction.IsNumber(data(i)) Then
             dataArr(k) = data(i)
             k = k + 1
         End If
@@ -95,4 +95,5 @@ ElseIf n = 1 And (k = 0 Or k = 1) Then
 Else
     he_srf = he_srf(k - n, n - 1) + he_srf(k, n - 1)
 End If
+
 

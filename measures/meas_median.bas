@@ -4,18 +4,9 @@ Attribute VB_Name = "meas_median"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub me_median_addHelp()
-Application.MacroOptions _
-    Macro:="me_median", _
-    Description:="Median", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "vertical specific range with data", _
-        "optional vertical range with labels in order if data is non-numeric.", _
-        "optional optional which to return if median falls between two values, either between (default), low or high")
-               
-End Sub
 Function me_median(data As Range, Optional levels As Range, Optional tieBreaker = "between")
+Attribute me_median.VB_Description = "Median"
+Attribute me_median.VB_ProcData.VB_Invoke_Func = " \n14"
     
     'get data as numeric values
     If levels Is Nothing Then

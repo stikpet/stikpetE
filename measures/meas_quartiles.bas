@@ -4,22 +4,6 @@ Attribute VB_Name = "meas_quartiles"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub me_quartiles_addHelp()
-Application.MacroOptions _
-    Macro:="me_quartiles", _
-    Description:="Quartiles", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "vertical specific range with data", _
-        "optional vertical range with labels in order if data is non-numeric.", _
-        "optional which method to use to calculate quartiles indexMethod can be set to Can be set to inclusive, exclusive, sas1, sas2, sas3, sas5, sas4, ms, lohninger, hl2, hl1, excel, pd2, pd3, pd4, hf3b, pd5, hf8, hf9, maple2", _
-        "optional to indicate which type of indexing to use. can be set to inclusive, exclusive, sas1, sas4, excel, hl, hf8, hf9.", _
-        "optional to indicate what type of rounding to use for first quarter", _
-        "optional to indicate the use of the integer or the midpoint method for first quarter", _
-        "optional to indicate what type of rounding to use for third quarter", _
-        "optional to indicate the use of the integer or the midpoint method for third quarter")
-               
-End Sub
 Function me_quartiles(data As Range, Optional levels As Range, Optional method = "own", Optional indexMethod = "sas1", Optional q1Frac = "linear", Optional q1Int = "int", Optional q3Frac = "linear", Optional q3Int = "int")
 
     'get data as numeric values
@@ -205,9 +189,11 @@ Function me_quartiles(data As Range, Optional levels As Range, Optional method =
     'find the text representatives
     If levels Is Nothing Then
     
-        Dim results1(0 To 1) As Double
-        results1(0) = q1
-        results1(1) = q3
+        Dim results1(0 To 1, 0 To 1) As Variant
+        results1(0, 0) = "q1"
+        results1(0, 1) = "q3"
+        results1(1, 0) = q1
+        results1(1, 1) = q3
         me_quartiles = results1
     
     Else
@@ -226,11 +212,15 @@ Function me_quartiles(data As Range, Optional levels As Range, Optional method =
         End If
         
         
-        Dim results2(0 To 3) As Variant
-        results2(0) = q1
-        results2(1) = q3
-        results2(2) = q1T
-        results2(3) = q3T
+        Dim results2(0 To 1, 0 To 3) As Variant
+        results2(0, 0) = "q1"
+        results2(0, 1) = "q3"
+        results2(0, 2) = "q1-Text"
+        results2(0, 3) = "q3-Text"
+        results2(1, 0) = q1
+        results2(1, 1) = q3
+        results2(1, 2) = q1T
+        results2(1, 3) = q3T
         
         me_quartiles = results2
         
@@ -238,4 +228,5 @@ Function me_quartiles(data As Range, Optional levels As Range, Optional method =
         
 
 End Function
+
 

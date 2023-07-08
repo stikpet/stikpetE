@@ -4,17 +4,6 @@ Attribute VB_Name = "eff_size_cohen_g"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub es_cohen_g_addHelp()
-Application.MacroOptions _
-    Macro:="es_cohen_g", _
-    Description:="Cohen's g", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "range with data", _
-        "optional range with the two codes to count")
-        
-End Sub
-
 Function es_cohen_g(data As Range, Optional codes As Range)
 Attribute es_cohen_g.VB_Description = "Cohen's g"
 Attribute es_cohen_g.VB_ProcData.VB_Invoke_Func = " \n14"

@@ -4,17 +4,9 @@ Attribute VB_Name = "thumb_cohen_w"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub th_cohen_w_addHelp()
-Application.MacroOptions _
-    Macro:="th_cohen_w", _
-    Description:="Cohen's w rule-of-thumb", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "Cohen w value", _
-        "which rule of thumb, currently only cohen", _
-        "output to show, either ref, qual, or both (default)")
-End Sub
 Function th_cohen_w(w, Optional qual = "cohen", Optional output = "both")
+Attribute th_cohen_w.VB_Description = "Cohen's w rule-of-thumb"
+Attribute th_cohen_w.VB_ProcData.VB_Invoke_Func = " \n14"
 
     'Qualification
     

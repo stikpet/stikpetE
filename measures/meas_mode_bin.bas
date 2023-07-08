@@ -4,20 +4,9 @@ Attribute VB_Name = "meas_mode_bin"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub me_mode_bin_addHelp()
-Application.MacroOptions _
-    Macro:="me_mode_bin", _
-    Description:="Mode for Binned Data", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "range with three columns containing the lower bounds, upper bounds and frequencies", _
-        "optional to indicate what to do if all frequencies are equal, either none (default) or all", _
-        "optional to indicate method to calculate specific mode value, either none (default), midpoint or quadratic", _
-        "optional to indicate the output to show, either all (default), mode or fd")
-               
-End Sub
-
-Function me_mode_bin(binData As range, Optional allEq = "none", Optional value = "none", Optional output = "all")
+Function me_mode_bin(binData As Range, Optional allEq = "none", Optional value = "none", Optional output = "all")
+Attribute me_mode_bin.VB_Description = "Mode for Binned Data"
+Attribute me_mode_bin.VB_ProcData.VB_Invoke_Func = " \n14"
 'binData should be a range with three columns: lower bound, upper bound and frequency
     
     Dim fd() As Double
@@ -60,9 +49,20 @@ Function me_mode_bin(binData As range, Optional allEq = "none", Optional value =
             End If
         
         ElseIf value = "quadratic" Then
-            d1 = modeFD
-            d2 = modeFD - fd(2)
+            If iMode(1) = 1 Then
+                d1 = modeFD - 0
+            Else
+                d1 = modeFD - fd(iMode(1) - 1)
+            End If
+            
+            If iMode(1) = k Then
+                d2 = modeFD
+            Else
+                d2 = modeFD - fd(iMode(1) + 1)
+            End If
+            
             Mode = binData.Cells(iMode(1), 1) + d1 / (d1 + d2) * (binData.Cells(iMode(1), 2) - binData.Cells(iMode(1), 1))
+            
             If nModes > 1 Then
                 For i = 2 To nModes
                     d1 = modeFD - fd(iMode(i) - 1)

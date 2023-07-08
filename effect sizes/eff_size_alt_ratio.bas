@@ -5,8 +5,9 @@ Attribute VB_Name = "eff_size_alt_ratio"
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
 
-
 Function es_alt_ratio(data As Range, Optional codes As Range, Optional p0 = 0.5, Optional category, Optional output = "all")
+Attribute es_alt_ratio.VB_Description = "Alternative Ratio"
+Attribute es_alt_ratio.VB_ProcData.VB_Invoke_Func = " \n14"
 'Function that determines the Alternative Ratio a.k.a. Relative Risk
 'Input a list of scores, the codes of two categories to compare, and the expected proportion from the null hypothesis
 'Optional input the category of which to calculate the AR from

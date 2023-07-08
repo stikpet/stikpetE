@@ -4,17 +4,6 @@ Attribute VB_Name = "test_multinomial_gof"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub ts_multinomial_gof_addHelp()
-Application.MacroOptions _
-    Macro:="ts_multinomial_gof", _
-    Description:="Multinomial Exact Goodness-of-Fit Test", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "range with data", _
-        "Optional range with categories and expected counts", _
-        "output to show, either " & Chr(34) & "all" & "(default), " & Chr(34) & "pvalue" & ", " & Chr(34) & "pobs" & Chr(34) & Chr(34) & ", " & Chr(34) & "ncomb" & Chr(34))
-        
-End Sub
 Function ts_multinomial_gof(data As Range, Optional expCount As Range, Optional output = "all")
 Attribute ts_multinomial_gof.VB_Description = "Performs a G-test test of goodness-of-fit (a.k.a. likelihood ratio)"
 Attribute ts_multinomial_gof.VB_ProcData.VB_Invoke_Func = " \n14"

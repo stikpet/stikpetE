@@ -4,24 +4,12 @@ Attribute VB_Name = "eff_size_dominance"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub es_dominance_addHelp()
-Application.MacroOptions _
-    Macro:="es_dominance", _
-    Description:="Dominance and a Vargha-Delaney A like effect size measure", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "vertical specific range with data", _
-        "optional vertical range with labels in order if data is non-numeric.", _
-        "optional parameter to set the hypothesized median. If not used the midrange is used", _
-        "optional to set what output to show. Either dominance (default), vda, domValue, vdaValue, or mu")
-                
-End Sub
-
-
 Function es_dominance(data As Range, _
                     Optional levels As Range, _
                     Optional mu = "none", _
                     Optional output = "dominance")
+Attribute es_dominance.VB_Description = "Dominance and a Vargha-Delaney A like effect size measure"
+Attribute es_dominance.VB_ProcData.VB_Invoke_Func = " \n14"
                     
 'get data as numeric values
     If levels Is Nothing Then

@@ -4,19 +4,10 @@ Attribute VB_Name = "eff_size_cohen_h_os"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub es_cohen_h_os_addHelp()
-Application.MacroOptions _
-    Macro:="es_cohen_h2", _
-    Description:="Cohen's h2 for one-sample tests", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "range with data", _
-        "optional range with the two codes to count", _
-        "expected proportion (default 0.5)")
-        
-End Sub
 
 Function es_cohen_h_os(data As Range, Optional codes As Range, Optional p0 = 0.5)
+Attribute es_cohen_h_os.VB_Description = "Cohen's h2 for one-sample tests"
+Attribute es_cohen_h_os.VB_ProcData.VB_Invoke_Func = " \n14"
 'Function that determines Cohen's h for a one-sample.
 'Input a list of scores, optional the two categories, the expected proportion from the null hypothesis, and the output
 

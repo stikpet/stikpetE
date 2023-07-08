@@ -4,21 +4,11 @@ Attribute VB_Name = "poho_binomial"
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
 
-Public Sub ph_binomial_addHelp()
-Application.MacroOptions _
-    Macro:="ph_binomial", _
-    Description:="Pairwise Binomial Test for Post-Hoc Analysis", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "specific range with data", _
-        "optional range categories and expected counts", _
-        "method to use for two sided, either " & Chr(34) & "double" & Chr(34) & ", " & Chr(34) & "smallp" & Chr(34) & ", or " & Chr(34) & "eqdist" & Chr(34) & " (default)", _
-        "post hoc analysis to use, currently only bonferroni (default)")
-               
-End Sub
 Function ph_binomial(data As Range, Optional expCount As Range, _
                         Optional TwoSidedMethod = "eqdist", _
                         Optional posthoc = "bonferroni")
+Attribute ph_binomial.VB_Description = "Pairwise Binomial Test for Post-Hoc Analysis"
+Attribute ph_binomial.VB_ProcData.VB_Invoke_Func = " \n14"
 
     'determine how many categories there are and the total sample size (n).
     'cats(i, 1) the label of the category i

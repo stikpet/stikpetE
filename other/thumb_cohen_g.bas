@@ -1,15 +1,7 @@
 Attribute VB_Name = "thumb_cohen_g"
-Public Sub th_cohen_g_addHelp()
-Application.MacroOptions _
-    Macro:="th_cohen_g", _
-    Description:="Rules of Thumb for Cohen g", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "the Cohen g value", _
-        "optional optional the rule of thumb to be used. Currently only cohen available (also then default)", _
-        "output to show, either all (default) for array result, qual for only the classification, or ref for the reference")
-End Sub
 Function th_cohen_g(g, Optional qual = "cohen", Optional output = "all")
+Attribute th_cohen_g.VB_Description = "Rules of Thumb for Cohen g"
+Attribute th_cohen_g.VB_ProcData.VB_Invoke_Func = " \n14"
 
     'Cohen's rule of thumb
     If qual = "cohen" Then

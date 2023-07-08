@@ -3,24 +3,6 @@ Attribute VB_Name = "test_wilcoxon_os"
 'Companion website: https://PeterStatistics.com
 'YouTube channel: https://www.youtube.com/stikpet
 'Donations welcome at Patreon: https://www.patreon.com/bePatron?u=19398076
-
-Public Sub ts_wilcoxon_os_addHelp()
-Application.MacroOptions _
-    Macro:="ts_wilcoxon_os", _
-    Description:="one-sample Wilcoxon signed rank test", _
-    category:=14, _
-    ArgumentDescriptions:=Array( _
-        "vertical specific range with data", _
-        "optional vertical range with labels in order if data is non-numeric.", _
-        "optional hypothesized median, otherwise the midrange will be used", _
-        "optional boolean to use a tie correction (default is True)", _
-        "optional method to use for approximation. Either " & Chr(34) & "wilcoxon" & Chr(34) & " (default), " & Chr(34) & "exact" & Chr(34) & ", " & Chr(34) & "imanz" & Chr(34) & " or " & Chr(34) & "imant" & Chr(34) & " for Iman's z or t approximation", _
-        "optional method to deal with scores equal to mu. Either " & Chr(34) & "wilcoxon" & Chr(34) & " (default), " & Chr(34) & "pratt" & Chr(34) & " or " & Chr(34) & "zsplit" & Chr(34), _
-        "optional boolean to use a continuity correction (default is False)", _
-        "output to show, either " & Chr(34) & "all" & Chr(34) & "(default), " & Chr(34) & "pvalue" & Chr(34) & ", " & Chr(34) & "df" & Chr(34) & ", " & Chr(34) & "statistic" & Chr(34) & ", or " & Chr(34) & "w " & Chr(34))
-                
-End Sub
-
 Function ts_wilcoxon_os(data As Range, _
                     Optional levels As Range, _
                     Optional mu = "none", _
@@ -29,8 +11,11 @@ Function ts_wilcoxon_os(data As Range, _
                     Optional eqMed = "wilcoxon", _
                     Optional cc = False, _
                     Optional output = "all")
+Attribute ts_wilcoxon_os.VB_Description = "perform a one-sample Wilcoxon Signed Rank Test"
+Attribute ts_wilcoxon_os.VB_ProcData.VB_Invoke_Func = " \n14"
 
-
+    testUsed = "Wilcoxon signed rank test"
+    
     'get data as numeric values
     If levels Is Nothing Then
         dataN = he_range_to_num_array(data)
@@ -278,17 +263,21 @@ Function ts_wilcoxon_os(data As Range, _
     ElseIf output = "df" Then
         ts_wilcoxon_os = df
     Else
-        Dim res(1 To 2, 1 To 5)
-        res(1, 1) = "W"
-        res(1, 2) = "statistic"
-        res(1, 3) = "df"
-        res(1, 4) = "p-value"
-        res(1, 5) = "test"
-        res(2, 1) = w
-        res(2, 2) = statistic
-        res(2, 3) = df
-        res(2, 4) = pVal
-        res(2, 5) = testUsed
+        Dim res(1 To 2, 1 To 7)
+        res(1, 1) = "nr"
+        res(1, 2) = "mu"
+        res(1, 3) = "W"
+        res(1, 4) = "statistic"
+        res(1, 5) = "df"
+        res(1, 6) = "p-value"
+        res(1, 7) = "test"
+        res(2, 1) = nr
+        res(2, 2) = mu
+        res(2, 3) = w
+        res(2, 4) = statistic
+        res(2, 5) = df
+        res(2, 6) = pVal
+        res(2, 7) = testUsed
         
         ts_wilcoxon_os = res
     End If

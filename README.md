@@ -19,6 +19,7 @@ Of course I could have made mistakes, so use at own risk.
 The following functions are included:
 
 |Function|Performs|
+|--------|--------|
 |di_bsncdf|Bivariate Normal Distribution|
 |di_kendall_tau|Kendall Tau Distribution|
 |di_mpmf|Multinomial Distribution|

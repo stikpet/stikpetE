@@ -81,12 +81,11 @@ The following functions are included:
 |ph_dunn|Post-Hoc Dunn test (after Kruskal-Wallis)|
 |ph_dunn_q|Post-Hoc Dunn test (after Cochran Q)|
 |ph_friedman|Post-Hoc Friedman test|
-|ph_mann_whitney|Pairwise Mann-Whitney U tests|
 |ph_mcnemar_co|Pairwise McNemar test (collapsing others)|
 |ph_mcnemar_pw|Pairwise McNemar test|
-|ph_mood_median|Pairwise Mood Median test|
 |ph_nemenyi|Post-Hoc Nemenyi Test|
 |ph_pairwise_is|Post-Hoc Pairwise Independent Samples Test|
+|ph_pairwise_iso|Post-Hoc Pairwise Independent Samples Test for Ordinal data|
 |ph_pairwise_ps|Post-Hoc Pairwise Paired Samples Tests|
 |ph_pairwise_t|Post-Hoc Pairwise Student T|
 |ph_residual|Post-Hoc Residual Test|
